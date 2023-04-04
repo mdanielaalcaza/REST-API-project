@@ -1,6 +1,7 @@
 const axios = require("axios");
-const fs = require("fs").promises;
-const path = require("path");
+const fs = require('fs').promises;
+const path = require('path');
+
 const main = async () => {
   let response = await axios.get("https://rickandmortyapi.com/api/character");
   let {
@@ -17,9 +18,9 @@ const main = async () => {
     })
     .map((personajes) => Object.values(personajes).join(","))
     .join("\n");
-
-  await fs.writeFile(path.join(__dirname, "data.csv"), character);
-  //console.log(path.join(__dirname, "data.csv"));
-  //console.log(character);
+  
+  await fs.writeFile(path.join(__dirname, 'data.csv'), character)
+    //console.log(path.join(__dirname, 'data.csv'));
+    //console.log(character);
 };
 main();
